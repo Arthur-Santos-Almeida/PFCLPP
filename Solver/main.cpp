@@ -26,12 +26,12 @@ int cplex() {
     // Path de leitura
     const char* path = DIRETORIO_MODELO NOME_INSTANCIA LP;
 
-    // Arrays para vari�veis e restri��es
+    // Arrays para variáveis e restrições
     IloObjective obj(env);
     IloNumVarArray vars(env);
     IloRangeArray constraints(env);
 
-    // L� o modelo do .lp
+    // Lê o modelo do .lp
     cplex.importModel(model, path, obj, vars, constraints);
 
     if (vars.getSize() == 0 && constraints.getSize() == 0) {
@@ -44,12 +44,12 @@ int cplex() {
     // Define o limite de tempo
     cplex.setParam(IloCplex::Param::TimeLimit, LIMITE_TEMPO);
 
-    // Inicia o cron�metro
+    // Inicia o cronômetro
     auto inicio = std::chrono::high_resolution_clock::now();
 
     // Resolve o .lp
     if (cplex.solve()) {
-        // Finaliza do cron�metro
+        // Finaliza o cronômetro
         auto fim = std::chrono::high_resolution_clock::now();
         std::chrono::duration<double> duracao = fim - inicio;
 
@@ -65,7 +65,7 @@ int cplex() {
         std::cout << "Solucao salva em: " << arquivo_solucao << std::endl;
     }
     else {
-        std::cout << "Nao foi poss�vel encontrar uma solucao viavel." << std::endl;
+        std::cout << "Nao foi possível encontrar uma solucao viavel." << std::endl;
     }
 
     env.end();
@@ -87,13 +87,13 @@ int gurobi() {
     // Define o limite de tempo
     model.set(GRB_DoubleParam_TimeLimit, LIMITE_TEMPO);
 
-    // Inicia o cron�metro
+    // Inicia o cronômetro
     auto inicio = std::chrono::high_resolution_clock::now();
 
     // Resolve o modelo
     model.optimize();
 
-    // Finaliza do cron�metro
+    // Finaliza o cronômetro
     auto fim = std::chrono::high_resolution_clock::now();
     std::chrono::duration<double> duracao = fim - inicio;
 
