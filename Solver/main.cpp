@@ -34,12 +34,6 @@ int cplex() {
 
     // Lê o modelo do .lp
     cplex.importModel(model, path, obj, vars, constraints);
-
-    if (vars.getSize() == 0 && constraints.getSize() == 0) {
-        std::cerr << "Erro: o arquivo " << path << " nao contem um modelo valido." << std::endl;
-        return 1;
-    }
-
     cplex.extract(model);
 
     // Define o limite de tempo
