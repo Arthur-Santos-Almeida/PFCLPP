@@ -47,9 +47,6 @@ def ler_coeficientes(caminho_arquivo, listaConflitos, N, P):
                     #     print(f"idLabelEmConflito: {idLabelEmConflito}, i: {i}, j: {j}, a: {a}, b: {b}\n")
 
 def gerar_lp(N, P, listaConflitos, arquivo_saida):
-
-    if N is None or P is None:
-        return  # Não prosseguir em caso de erro na leitura
     
     with open(arquivo_saida, "w") as f:
 
