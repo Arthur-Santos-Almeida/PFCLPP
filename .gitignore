@@ -1,0 +1,8 @@
+.vs
+.vscode
+Artigos
+InstancesExtra
+Rascunhos
+# Ignorar tudo no diretório Solver, exceto o arquivo main.cpp no subdiretório Solver/Solver
+Solver/**
+!Solver/Solver/main.cpp
